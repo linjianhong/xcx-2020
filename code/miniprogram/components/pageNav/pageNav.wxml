@@ -1,0 +1,4 @@
+<!--components/pageNav.wxml-->
+<view class="page-title bk-e" style="padding: {{SystemInfo.statusBarHeight}}px 0 0 15px;">
+	<view class="">{{text1}}</view>
+</view>

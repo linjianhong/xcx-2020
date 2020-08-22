@@ -22,7 +22,7 @@ App({
     wx.getSystemInfo({
       success:  (res) =>{
         console.log("res", res);
-        this.globalData.SystemInfo = res;
+        this.SystemInfo = res;
       }
     })
   }

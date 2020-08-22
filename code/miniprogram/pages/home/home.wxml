@@ -1,93 +1,26 @@
 <!--index.wxml-->
 
-<view class="page-title bk-e">
-	<view class="">智能快记</view>
-</view>
+<page-nav text1="智能快记"></page-nav>
 
-<view class="flex-1 v-scroll flex-v flex-stretch bk-f">
+<scroll-view scroll-y="true"  class="flex-1 flex-v flex-top flex-stretch bk-f">
 	<!-- 用户 openid, unionid -->
-	<view class="flex padding-1 bk-f8 bb-ccc">
-		<view class="flex padding-1 bk-f radius flex-1">
-			<input class="weui-input flex-1" />
+	<view class="flex padding-1">
+		<view class="flex padding-1 bk-e radius flex-1">
+			<input class="weui-input flex-1" placeholder="搜索" />
 			<icon class="icon-small" type="search" size="20"></icon>
 		</view>
 	</view>
 
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
-	<br />
-	AA
+	<view class="flex-v padding-1 bk-f8 bb-ccc" wx:for="{{[]}}">
+		<view class="flex padding-1 bk-f radius flex-1" wx:for="{{['screenHeight','screenWidth','windowHeight','windowWidth','statusBarHeight']}}">
+			<view class=""> {{item}} :</view>
+			<view class=""> {{theApp.SystemInfo[item]}}</view>
+		</view>
+	</view>
 
+</scroll-view>
+
+
+<view class="fixed-bc flex-cc padding-1">
+	<view class="btn flex bk-d padding-2">+</view>
 </view>

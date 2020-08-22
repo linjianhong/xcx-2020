@@ -11,9 +11,8 @@ Page({
   },
 
   onLoad: function () {
-    wx.setEnableDebug({
-      enableDebug: true
-    })
+    var theApp = getApp();
+    this.setData({ theApp: theApp })
     if (!wx.cloud) {
       wx.redirectTo({
         url: '../chooseLib/chooseLib',
