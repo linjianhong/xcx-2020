@@ -1,30 +1,93 @@
 <!--index.wxml-->
-<view class="container">
 
+<view class="page-title bk-e">
+	<view class="">智能快记</view>
+</view>
+
+<view class="flex-1 v-scroll flex-v flex-stretch bk-f">
 	<!-- 用户 openid, unionid -->
-	<view class="uploader flex-left">
-		<button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})" size="default"></button>
-		<view class="flex-1"></view>
-	</view>
-
-
-	<!-- 添加 -->
-	<view class="uploader">
-		<view class="uploader-text" bindtap="doUpload">
-			<text>添加</text>
-		</view>
-		<view class="uploader-container" wx:if="{{imgUrl}}">
-			<image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+	<view class="flex padding-1 bk-f8 bb-ccc">
+		<view class="flex padding-1 bk-f radius flex-1">
+			<input class="weui-input flex-1" />
+			<icon class="icon-small" type="search" size="20"></icon>
 		</view>
 	</view>
 
-
-	<!-- 云调用 -->
-	<view class="uploader">
-		<navigator url="../openapi/openapi" open-type="navigate" class="uploader-text">
-			<text>配置</text>
-		</navigator>
-	</view>
-
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
+	<br />
+	AA
 
 </view>

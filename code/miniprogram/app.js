@@ -1,7 +1,11 @@
 //app.js
 App({
   onLaunch: function () {
-    
+    wx.setEnableDebug({
+      enableDebug: true
+    })
+    console.log('statusBarHeight')
+
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
@@ -14,7 +18,12 @@ App({
         traceUser: true,
       })
     }
-
     this.globalData = {}
+    wx.getSystemInfo({
+      success:  (res) =>{
+        console.log("res", res);
+        this.globalData.SystemInfo = res;
+      }
+    })
   }
 })
