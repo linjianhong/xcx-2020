@@ -16,11 +16,23 @@ Page({
    */
   onLoad: function (options) {
     wx.setNavigationBarTitle({
-      title: '当前页面'
+      title: '备忘录'
     });
 
+    console.log("页面参数", options);
+    if (options.id) {
+      this.setData({ id: options.id });
+      var list = Datas.load();
+      var item = list.find(a => a.id == options.id);
+      if (item) {
+        this.setData({ item });
+        this.setData({ value: item.text });
+      }
+    } else {
+      this.setData({ value: "" })
+    }
 
-    this.setData({ value: "theApp" })
+
   },
 
   /**

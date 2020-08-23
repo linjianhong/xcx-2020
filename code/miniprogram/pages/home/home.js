@@ -1,6 +1,7 @@
 //index.js
 const app = getApp()
 var Datas = require('../../lib/Datas.js')
+var date = require('../../lib/date.js')
 
 Page({
   data: {
@@ -20,9 +21,7 @@ Page({
       })
       return
     }
-
-    var list = Datas.load();
-    this.setData({ list })
+    this.initList();
 
     // 获取用户信息
     wx.getSetting({
@@ -40,6 +39,23 @@ Page({
         }
       }
     })
+  },
+
+  initList: function () {
+    var list = Datas.load();
+    list = list.map(item => {
+      return {
+        id: item.id,
+        t:date.format(new Date( item.t),"yyyy-MM-dd HH:mm"),
+        text: item.text.split("\n")[0].substr(0, 20)
+      }
+    })
+    this.setData({ list })
+  },
+
+
+  onShow() {
+    this.initList();
   },
 
   onGetUserInfo: function (e) {
@@ -77,5 +93,11 @@ Page({
   doUpload: function () {
     // 选择图片
   },
-
+  edit: function (e) {
+    var item = e.currentTarget.dataset["item"];
+    wx.navigateTo({
+      url: "/pages/edit/edit?id=" + item.id,
+    });
+    console.log("点击笔记", e.currentTarget.dataset["item"])
+  }
 })

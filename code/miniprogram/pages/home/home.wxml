@@ -7,18 +7,10 @@
 		</view>
 	</view>
 
-	<view class="flex-v padding-1 bb-ccc" wx:for="{{list}}">
+	<view class="flex-v padding-1 bb-ccc" wx:for="{{list}}"  bindtap="edit" data-item="{{item}}">
 		<view class="flex-v padding-1">
-			<view class=""> {{item.text}} :</view>
-			<view class=""> {{item.t}}</view>
-		</view>
-	</view>
-
-	<view class="flex-v padding-1 bk-f8 bb-ccc" wx:for="{{[]}}">
-		<view class="flex padding-1 bk-f radius flex-1"
-			wx:for="{{['screenHeight','screenWidth','windowHeight','windowWidth','statusBarHeight']}}">
-			<view class=""> {{item}} :</view>
-			<view class=""> {{theApp.SystemInfo[item]}}</view>
+			<view class="em-12 b-900"> {{item.text}}</view>
+			<view class="em-08"> {{item.t}}</view>
 		</view>
 	</view>
 

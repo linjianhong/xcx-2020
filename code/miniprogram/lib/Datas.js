@@ -1,4 +1,5 @@
 
+var date = require('./date.js')
 var Storage_KEY = "node-list";
 var lastID = 1;
 
@@ -51,6 +52,7 @@ function load() {
 }
 
 var Note = {
+  date,
   load,
   update
 }
