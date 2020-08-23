@@ -1,8 +1,4 @@
-<!--index.wxml-->
-
-<page-nav text1="智能快记"></page-nav>
-
-<scroll-view scroll-y="true"  class="flex-1 flex-v flex-top flex-stretch bk-f">
+<view class="flex-1 flex-v flex-top flex-stretch bk-f">
 	<!-- 用户 openid, unionid -->
 	<view class="flex padding-1">
 		<view class="flex padding-1 bk-e radius flex-1">
@@ -11,16 +7,28 @@
 		</view>
 	</view>
 
+	<view class="flex-v padding-1 bb-ccc" wx:for="{{list}}">
+		<view class="flex-v padding-1">
+			<view class=""> {{item.text}} :</view>
+			<view class=""> {{item.t}}</view>
+		</view>
+	</view>
+
 	<view class="flex-v padding-1 bk-f8 bb-ccc" wx:for="{{[]}}">
-		<view class="flex padding-1 bk-f radius flex-1" wx:for="{{['screenHeight','screenWidth','windowHeight','windowWidth','statusBarHeight']}}">
+		<view class="flex padding-1 bk-f radius flex-1"
+			wx:for="{{['screenHeight','screenWidth','windowHeight','windowWidth','statusBarHeight']}}">
 			<view class=""> {{item}} :</view>
 			<view class=""> {{theApp.SystemInfo[item]}}</view>
 		</view>
 	</view>
 
-</scroll-view>
+	<view class="flex-cc em-16 text-8 padding-3">没有任何笔记</view>
+</view>
 
 
 <view class="fixed-bc flex-cc padding-1">
-	<view class="btn flex bk-d padding-2">+</view>
+	<navigator url="/pages/edit/edit" class="btn flex-v bk-d">
+		<view class="em-40">+</view>
+		<view class="text-8 padding-1">新建</view>
+	</navigator>
 </view>

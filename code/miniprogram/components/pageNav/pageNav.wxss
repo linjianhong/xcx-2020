@@ -2,10 +2,17 @@
 .page-title {
   width: 100%;
   height: 50px;
-  
+  border-bottom: solid 1px #ccc;
+}
+
+.page-title.nav {
+  position: fixed;
+  z-index: 999;
+  background: #eee;
+  left:0;
+  top:0;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  border-bottom: solid 1px #ccc;
 }

@@ -1,0 +1,38 @@
+<!--index.wxml-->
+
+<page-nav text1="备忘录"></page-nav>
+
+<view scroll-y="true"  class="flex-1 flex-v flex-top flex-stretch bk-f">
+	<!-- 用户 openid, unionid -->
+	<view class="flex padding-1">
+		<view class="flex padding-1 bk-e radius flex-1">
+			<input class="weui-input flex-1" placeholder="搜索" />
+			<icon class="icon-small" type="search" size="20"></icon>
+		</view>
+	</view>
+
+	<view class="flex-v padding-1 bk-f8 bb-ccc" wx:for="{{[]}}">
+		<view class="flex padding-1 bk-f radius flex-1" wx:for="{{['screenHeight','screenWidth','windowHeight','windowWidth','statusBarHeight']}}">
+			<view class=""> {{item}} :</view>
+			<view class=""> {{theApp.SystemInfo[item]}}</view>
+		</view>
+	</view>
+
+	<view class="em-50 padding-3">AAA</view>
+	<view class="em-50 padding-3">AAA</view>
+	<view class="em-50 padding-3">AAA</view>
+	<view class="em-50 padding-3">AAA</view>
+	<view class="em-50 padding-3">AAA</view>
+	<view class="em-50 padding-3">AAA</view>
+	<view class="em-50 padding-3">AAA</view>
+	<view class="em-50 padding-3">AAA</view>
+	<view class="em-50 padding-3">AAA</view>
+</view>
+
+
+<view class="fixed-bc flex-cc padding-1">
+	<view class="btn flex-v bk-d">
+		<view class="em-40">+</view>
+		<view class="text-8 padding-1">新建</view>
+	</view>
+</view>

@@ -1,5 +1,6 @@
 //index.js
 const app = getApp()
+var Datas = require('../../lib/Datas.js')
 
 Page({
   data: {
@@ -19,6 +20,9 @@ Page({
       })
       return
     }
+
+    var list = Datas.load();
+    this.setData({ list })
 
     // 获取用户信息
     wx.getSetting({

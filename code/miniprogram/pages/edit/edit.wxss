@@ -1,0 +1,25 @@
+/* miniprogram/pages/edit/edit.wxss */
+page {
+  background: #fff;
+}
+
+textarea {
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+
+
+.fixed-bc {
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  width: 100%;
+}
+.fixed-bc .btn {
+  padding: 10rpx;
+  border-radius: 10rpx;
+  color: #00f;
+}

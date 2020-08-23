@@ -1,4 +1,8 @@
 <!--components/pageNav.wxml-->
-<view class="page-title bk-e" style="padding: {{SystemInfo.statusBarHeight}}px 0 0 15px;">
+<view class="page-title nav bk-e" style="padding: {{SystemInfo.statusBarHeight}}px 0 0 15px;">
 	<view class="">{{text1}}</view>
 </view>
+<view class="page-title bk" style="padding: {{SystemInfo.statusBarHeight}}px 0 0 15px;">
+	<view class="">　</view>
+</view>
+
