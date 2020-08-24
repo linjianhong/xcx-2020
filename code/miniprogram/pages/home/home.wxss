@@ -1,0 +1,43 @@
+/**index.wxss**/
+.note-item {
+  position: relative;
+  border-bottom: solid 1rpx #ccc;
+  background: #ccc;
+}
+
+.note-item-body {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  bottom: 1rpx;
+}
+
+.note-item-btn {
+  height: 110rpx;
+  background: #f00;
+  color: #fff;
+  width: 120rpx;
+  border-bottom: solid 1rpx #ccc;
+}
+
+.fixed-bc {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.fixed-bc .btn {
+  padding: 2rpx 80rpx;
+  border-radius: 80rpx;
+  font-size: 20rpx;
+  line-height: .8;
+  color: #00f;
+}
+
+.fixed-bc .btn :first-child {
+  line-height: .6;
+}

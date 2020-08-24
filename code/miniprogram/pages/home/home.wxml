@@ -1,0 +1,29 @@
+<view class="flex-1 flex-v flex-top flex-stretch bk-f" bind:touchstart="closeAll">
+	<!-- 用户 openid, unionid -->
+	<view class="flex padding-1">
+		<view class="flex padding-1 bk-e radius flex-1">
+			<input class="weui-input flex-1" placeholder="搜索" />
+			<icon class="icon-small" type="search" size="20"></icon>
+		</view>
+	</view>
+
+	<view class="note-item flex-right bb-ccc" wx:for="{{list}}" wx:key="item" data-item="{{item}}">
+		<view class="note-item-body flex-v padding-1" style="left:{{item.left}}rpx" data-item="{{item}}" catch:touchstart="itemTouchStart" bind:touchmove="itemTouchMove" bind:touchend="itemTouchEnd">
+			<view class="em-12 b-900"> {{item.text}}</view>
+			<view class="em-08"> {{item.t}}</view>
+		</view>
+		<view class="note-item-btn flex-cc" bindtap="remove" data-item="{{item}}">
+			<view class="em-08">删除</view>
+		</view>
+	</view>
+
+	<view class="flex-cc em-16 text-8 padding-3" wx:if="{{!list.length}}">没有任何笔记</view>
+</view>
+
+
+<view class="fixed-bc flex-cc padding-1">
+	<navigator url="/pages/edit/edit" class="btn flex-v bk-d">
+		<view class="em-40">+</view>
+		<view class="text-8 padding-1">新建</view>
+	</navigator>
+</view>
