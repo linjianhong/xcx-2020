@@ -14,7 +14,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: async function (options) {
     wx.setNavigationBarTitle({
       title: '备忘录'
     });
@@ -22,7 +22,7 @@ Page({
     console.log("页面参数", options);
     if (options.id) {
       this.setData({ id: options.id });
-      var list = Datas.load();
+      var list = await Datas.load();
       var item = list.find(a => a.id == options.id);
       if (item) {
         this.setData({ item });
@@ -43,11 +43,14 @@ Page({
   },
 
 
-  saveValue: function (e) {
+  saveValue:  function (e) {
     console.log("保存", e.detail)
     var item = this.data.item || {};
     item.text = e.detail.value;
-    this.setData({ item: Datas.update(item) });
+    Datas.update(item).then(newItem => {
+      console.log("newItem=", newItem)
+      // this.setData({ item: newItem });
+    });
   }
 
 })

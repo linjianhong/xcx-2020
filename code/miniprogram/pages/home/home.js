@@ -41,18 +41,21 @@ Page({
     })
   },
 
-  initList: function () {
-    var list = Datas.load();
-    list = list.map(item => {
-      return {
-        id: item.id,
-        t: date.format(new Date(item.t), "yyyy-MM-dd HH:mm"),
-        text: item.text.split("\n")[0].substr(0, 20),
-        open: false,
-        left: 0,
-      }
+  initList: async function () {
+    if (!this.listPromise) this.listPromise = Datas.load();
+    this.listPromise.then(list => {
+      this.listPromise = false;
+      var list = list.map(item => {
+        return {
+          id: item.id,
+          t: date.format(new Date(item.t), "yyyy-MM-dd HH:mm"),
+          text: item.text.split("\n")[0].substr(0, 20),
+          open: false,
+          left: 0,
+        }
+      })
+      this.setData({ list })
     })
-    this.setData({ list })
   },
 
   onShow() {

@@ -1,8 +1,1 @@
 <textarea class="weui-input flex-1" focus="{{1}}" value="{{value}}" bindinput="saveValue"></textarea>
-
-<view class="btns fixed-bc flex-right padding-1" bindtap="saveText">
-  <view class="btn flex bk-d">
-    <icon class="icon-small" type="success_no_circle" size="20"></icon>
-    <view class="padding-1">保存</view>
-  </view>
-</view>
