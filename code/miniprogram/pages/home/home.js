@@ -54,6 +54,7 @@ Page({
           left: 0,
         }
       })
+      list.sort((a, b) => b.t - a.t)
       this.setData({ list })
     })
   },
