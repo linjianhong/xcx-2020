@@ -1,0 +1,11 @@
+<view class="page-nav" style="padding-top:{{top}}px;padding-right:{{right}}px;height:{{height}}px">
+
+</view>
+<view class="page-nav abs flex-left" style="padding-top:{{top}}px;padding-right:{{right}}px;height:{{height}}px">
+  <view class="padding-1" style="width:{{right}}px;">
+    <slot name="btns"></slot>
+  </view>
+  <view class="flex-cc flex-1 b-900">
+    <slot name="title" class="flex-cc"></slot>
+  </view>
+</view>

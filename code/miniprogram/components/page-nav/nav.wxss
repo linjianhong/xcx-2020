@@ -1,0 +1,14 @@
+/* component/nav/nav.wxss */
+.page-nav {
+  box-sizing: border-box;
+}
+
+.page-nav.abs {
+  position: fixed;
+  background: #eee;
+  border-bottom: solid 1px #888;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+}
