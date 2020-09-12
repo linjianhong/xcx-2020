@@ -12,7 +12,7 @@ Page({
     requestResult: ''
   },
 
-  onLoad: function () {
+  onLoad: async function () {
     var theApp = getApp();
     this.setData({ theApp: theApp })
     if (!wx.cloud) {
@@ -23,6 +23,7 @@ Page({
     }
     this.initList();
 
+    console.log(wx.getMenuButtonBoundingClientRect(),await wx.getSystemInfo())
     // 获取用户信息
     wx.getSetting({
       success: res => {

@@ -42,6 +42,11 @@ Page({
 
   },
 
+  gotoHome: function (e) {
+    wx.navigateTo({
+      url: "/pages/home/home",
+    });
+  },
 
   saveValue:  function (e) {
     console.log("保存", e.detail)

@@ -8,6 +8,7 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "90快记",
+    "navigationStyle": "custom",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",

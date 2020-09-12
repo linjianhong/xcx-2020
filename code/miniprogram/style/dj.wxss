@@ -62,3 +62,9 @@
 .em-70{ font-size: 7.0em;}  .w-em25{ width: 25em;}
 .em-80{ font-size: 8.0em;}  .w-em26{ width: 26em;}
 .em-90{ font-size: 9.0em;}  .w-em27{ width: 27em;}
+
+.char{
+  margin: -8px 0 0 0;
+  padding: 0 6px;
+  line-height: 1em;
+}

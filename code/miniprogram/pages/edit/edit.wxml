@@ -1,1 +1,7 @@
-<textarea class="weui-input flex-1" focus="{{1}}" value="{{value}}" bindinput="saveValue"></textarea>
+<page-nav>
+  <view slot="btns" class="flex-left flex-v-center" bindtap="gotoHome">
+    <view class="em-20 char">‹</view>
+    <view>首页</view>
+  </view>
+  <view slot="title">90快记</view>
+</page-nav><textarea class="weui-input flex-1" focus="{{1}}" value="{{value}}" bindinput="saveValue"></textarea>

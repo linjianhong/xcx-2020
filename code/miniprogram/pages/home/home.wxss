@@ -1,4 +1,7 @@
 /**index.wxss**/
+
+
+
 .note-item {
   position: relative;
   border-bottom: solid 1rpx #ccc;

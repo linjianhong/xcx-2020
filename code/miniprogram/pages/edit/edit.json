@@ -1,4 +1,5 @@
 {
   "usingComponents": {
+    "page-nav": "../../../components/page-nav/nav"
   }
 }
