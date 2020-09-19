@@ -5,7 +5,7 @@ var date = require('../../lib/date.js')
 
 Page({
   data: {
-    avatarUrl: './user-unlogin.png',
+    loading: 1,
     userInfo: {},
     logged: false,
     takeSession: false,
@@ -22,8 +22,8 @@ Page({
       return
     }
     this.initList();
-
-    console.log(wx.getMenuButtonBoundingClientRect(),await wx.getSystemInfo())
+    wx.showLoading({ title: '加载中', icon: 'loading', duration: 30000 });
+    console.log(wx.getMenuButtonBoundingClientRect(), await wx.getSystemInfo())
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -57,6 +57,8 @@ Page({
       })
       list.sort((a, b) => b.t - a.t)
       this.setData({ list })
+      this.setData({ loading: 0 })
+      wx.hideLoading()
     })
   },
 

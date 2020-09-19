@@ -22,7 +22,7 @@
 		</view>
 	</view>
 
-	<view class="flex-cc em-16 text-8 padding-3" wx:if="{{!list.length}}">没有任何笔记</view>
+	<view class="flex-cc em-16 text-8 padding-3" wx:if="{{!list.length&&!loading}}">没有任何笔记</view>
 </view>
 
 
