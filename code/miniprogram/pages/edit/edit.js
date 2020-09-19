@@ -19,7 +19,7 @@ Page({
       title: '备忘录'
     });
 
-    console.log("页面参数", options);
+    // console.log("页面参数", options);
     if (options.id) {
       this.setData({ id: options.id });
       var list = await Datas.load();
@@ -48,14 +48,44 @@ Page({
     });
   },
 
-  saveValue:  function (e) {
-    console.log("保存", e.detail)
+  saveValue: function (e) {
+    // console.log("延时保存", e.detail)
     var item = this.data.item || {};
     item.text = e.detail.value;
-    Datas.update(item).then(newItem => {
-      console.log("newItem=", newItem)
-      // this.setData({ item: newItem });
+    this.delayUpdate(item);
+  },
+
+  delayUpdate: function (newItem) {
+    this.updating = this.updating || {}
+    if (this.updating.promise) {
+      console.log("等待上一个更新...");
+      return this.updating.promise.then(() => {
+        this.delayUpdate(newItem)
+      })
+    }
+
+    // console.log("延时保存", newItem)
+    if (this.updating.timer) {
+      clearTimeout(this.updating.timer);
+    }
+    this.updating = {
+      status: "timer",
+      timer: setTimeout(() => this.promiseUpdate(newItem), 1000)
+    }
+  },
+
+  promiseUpdate: function (item) {
+    // console.log("提交更新");
+    let promise = Datas.update(item).then(newItem => {
+      this.updating = {}
+      this.setData({ item: newItem });
+      console.log("更新完成","newItem=", newItem);
     });
+    this.updating = {
+      status: "promise",
+      promise
+    };
+    return promise;
   }
 
 })

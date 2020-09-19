@@ -4,6 +4,8 @@ cloud.init({
 })
 const myDB = cloud.database(); //{ env: 'dev-90note' }
 
+var debug = [];
+
 var Note = {
 
   unionid: "",
@@ -30,24 +32,27 @@ var Note = {
     }
     var t = +new Date();
     var list = await Note.load() || [];
-    var newItem = list.find(a => a.id == item.id);
-    if (!newItem && item.id) {
+    var oldItem = list.find(a => a.id == item.id);
+    if (!oldItem && item.id) {
+      debug.push({ "新建，有id": { oldItem, item } })
       list.push(item);
-    } else if (!newItem ) {
+    } else if (!oldItem) {
+      debug.push({ "新建，无id": { oldItem, item } })
       var id = list.map(a => a.id).sort((a, b) => b - a)[0];
       if (!id) id = 1; else id++;
-      newItem = {
+      oldItem = {
         id,
         t,
         text: item.text
       };
-      list.push(newItem);
+      list.push(oldItem);
     } else {
-      newItem.t = t;
-      newItem.text = item.text;
+      debug.push({ "修改": { oldItem, item } })
+      oldItem.t = t;
+      oldItem.text = item.text;
     }
     await Note.save(list);
-    return newItem;
+    return oldItem;
   },
 
   load: function () {
@@ -83,6 +88,7 @@ var Note = {
 
 }
 exports.main = async (event, context) => {
+  debug = []
   let { path, data } = event
   let { OPENID, UNIONID } = cloud.getWXContext() // 这里获取到的 openId 和 appId 是可信的
 
@@ -94,11 +100,12 @@ exports.main = async (event, context) => {
   if (!Note[path]) return {
     errcode: 1,
     errmsg: "不存在指定调用" + path,
+    debug,
   }
   let datas = await Note[path](data);
   return {
     errcode: 0,
-    path,
+    debug,
     data,
     datas
   }

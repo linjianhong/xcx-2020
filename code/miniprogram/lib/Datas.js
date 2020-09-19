@@ -23,8 +23,10 @@ async function update(item) {
   var list = await load();
   var newItem = list.find(a => a.id == item.id);
   if (!newItem && item.id) {
+    // console.log("新建，有ID")
     list.push(item);
   } else if (!newItem || !item.id) {
+    // console.log("新建，无ID")
     var id = list.map(a => a.id).sort((a, b) => b - a)[0];
     if (!id) id = 1; else id++;
     newItem = {
@@ -34,6 +36,7 @@ async function update(item) {
     };
     list.push(newItem);
   } else {
+    // console.log("修改")
     newItem.t = t;
     newItem.text = item.text;
   }
@@ -46,7 +49,7 @@ async function update(item) {
   }
 }
 async function load() {
-  console.log("前端 load")
+  // console.log("前端 load")
   try {
     var value = wx.getStorageSync(Storage_KEY);
     var list = value;//JSON.parse(value);
@@ -87,7 +90,7 @@ var Note = {
     }
     let res_cloud = await CloundData.load()
     let list_cloud = res_cloud.result.datas;
-    console.log("本地返回:", list_local, "云函数返回:", res_cloud)
+    console.log("本地返回:", list_local, "云函数返回:", res_cloud.result)
 
     let only_local = list_local.filter(item => !list_cloud.find(a => a.id == item.id));
     if (only_local.length > 0) CloundData.update(only_local).then(r => {
@@ -117,7 +120,7 @@ var Note = {
   Note[path] = async function (data) {
     let res = await Note_base[path](data)
     let res_cloud = await CloundData[path](data)
-    console.log("本地返回:", res, "云函数返回:", res_cloud)
+    console.log("本地返回:", res, "云函数返回:", res_cloud.result)
     return res
   }
 })
