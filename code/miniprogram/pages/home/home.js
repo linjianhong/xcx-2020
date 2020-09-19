@@ -75,8 +75,44 @@ Page({
     this.setData({ list });
   },
 
+  clickItem: function (e) {
+    var item = e.currentTarget.dataset["item"];
+    var n = e.currentTarget.dataset["n"];
+    var activeIndex = this.data.list.findIndex(a => a.id == item.id);
+    this.setData({ activeIndex });
+    console.log("点击", activeIndex, n)
+    wx.showActionSheet({
+      itemList: ['编辑', '删除'],
+      success: function (res) {
+        if (res.tapIndex == 0) {
+          wx.navigateTo({
+            url: "/pages/edit/edit?id=" + item.id,
+          });
+          return;
+        }
+        if (res.tapIndex == 1) {
+          var list = this.data.list.filter(a => a.id != item.id);
+          this.setData({ list });
+        }
+      },
+      fail: function (res) {
+        console.log(res.errMsg)
+      }
+    })
+  },
 
-
+  mainmenu: function () {
+    wx.showActionSheet({
+      itemList: ['A', 'B', "", 'C'],
+      success: function (res) {
+        console.log(JSON.stringify(res))
+        console.log(res.tapIndex) // 用户点击的按钮，从上到下的顺序，从0开始
+      },
+      fail: function (res) {
+        console.log(res.errMsg)
+      }
+    })
+  },
 
   closeAll: function () {
     var list = this.data.list;
@@ -84,7 +120,7 @@ Page({
     this.setData({ list });
   },
 
-  itemTouchStart: function (e) {
+  __itemTouchStart: function (e) {
     if (e.touches.length != 1) return this.closeAll();
     var pageX = e.touches[0].pageX;
     var item = e.currentTarget.dataset["item"];
@@ -97,7 +133,7 @@ Page({
     item.sliding = true;
     this.setData({ list });
   },
-  itemTouchMove: function (e, inst) {
+  __itemTouchMove: function (e, inst) {
     if (e.touches.length != 1) return this.closeAll();
     var item = e.currentTarget.dataset["item"];
     var list = this.data.list;
@@ -107,7 +143,7 @@ Page({
     item.left = item.left0 + pageX - item.pageX;
     this.setData({ list });
   },
-  itemTouchEnd: function (e) {
+  __itemTouchEnd: function (e) {
     var item = e.currentTarget.dataset["item"];
     if (!item.open && item.left < 10 && item.left > -10) {
       wx.navigateTo({

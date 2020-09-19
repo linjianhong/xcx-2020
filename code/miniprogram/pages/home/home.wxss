@@ -6,7 +6,9 @@
   position: relative;
   border-bottom: solid 1rpx #ccc;
   background: #ccc;
+  height: 110rpx;
 }
+
 
 .note-item-body {
   position: absolute;
@@ -16,9 +18,12 @@
   background: #fff;
   bottom: 1rpx;
 }
+.note-item.active .note-item-body{
+  background: #ccf;
+}
 
 .note-item-btn {
-  height: 110rpx;
+  height: 100%;
   background: #f00;
   color: #fff;
   width: 120rpx;

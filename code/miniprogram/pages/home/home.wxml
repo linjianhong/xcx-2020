@@ -1,5 +1,7 @@
 <page-nav>
-	<view slot="btns" class="flex-left flex-v-center"><view class="em-20 char text-8">≡</view></view>	
+	<view slot="btns" class="flex-left flex-v-center" bindtap="mainmenu">
+		<view class="em-20 char text-8">≡</view>
+	</view>
 	<view slot="title">90快记</view>
 </page-nav>
 <view class="flex-1 flex-v flex-top flex-stretch bk-f" bind:touchstart="closeAll">
@@ -11,14 +13,10 @@
 		</view>
 	</view>
 
-	<view class="note-item flex-right bb-ccc" wx:for="{{list}}" wx:key="item" data-item="{{item}}">
-		<view class="note-item-body flex-v padding-1" style="left:{{item.left}}rpx" data-item="{{item}}"
-			catch:touchstart="itemTouchStart" bind:touchmove="itemTouchMove" bind:touchend="itemTouchEnd">
+	<view class="note-item flex-right bb-ccc {{n==activeIndex&&'active'||'no'}}" wx:for-index="n" wx:for="{{list}}" wx:key="item" data-item="{{item}}" bindtap="clickItem">
+		<view class="note-item-body flex-v padding-1" style="left:{{item.left}}rpx" data-item="{{item}}">
 			<view class="em-12 b-900"> {{item.text}}</view>
 			<view class="em-08"> {{item.t}}</view>
-		</view>
-		<view class="note-item-btn flex-cc" bindtap="remove" data-item="{{item}}">
-			<view class="em-08">删除</view>
 		</view>
 	</view>
 
